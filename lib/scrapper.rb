@@ -12,70 +12,52 @@ class Scrapper
   goal2.children[1].css('span').each do|items|
   @@xs_xsmax_bands << items.text.to_i
   end
-  #binding.pry
-  #students = []
-#  card.css(".student-card a").each do |student|
-    #  student_profile_link = "#{student.attr('href')}"
-      #student_location = student.css('.student-location').text
-      #student_name = student.css('.student-name').text
-    #  students << {name: student_name, location: student_location, profile_url: student_profile_link}
-    @@xs_xsmax_bands
-    end
+
+@@xs_xsmax_bands
+
+end
 
 
 
 
-    def self.scrape_xr
+  def self.scrape_xr
     @@index_page = Nokogiri::HTML(open('https://www.apple.com/iphone/LTE/#iphone-xr'))
     iPhone_bands = @@index_page.css('div.section-content')
-     level1 = iPhone_bands.css('div.cellular-table-contents')
-     level2 = level1[1]
-     @@xr_bands = []
-     level2.children[1].css('span').each do|items|
-     @@xr_bands << items.text.to_i
-     end
-     #binding.pry
-
-      @@xr_bands
+    level1 = iPhone_bands.css('div.cellular-table-contents')
+    level2 = level1[1]
+    @@xr_bands = []
+    level2.children[1].css('span').each do|items|
+      @@xr_bands << items.text.to_i
       end
+@@xr_bands
+  end
 
 
 
 
-      def self.scrape_contry (name_of_contry)
+   def self.scrape_contry (name_of_contry)
         # scrape the bands from the frequencycheck site
         #todo : need to be aware if search results returns nil.
         #todo: our match regex only pair the first number
-      url = "https://www.frequencycheck.com/countries/#{name_of_contry}"
-      @@contry_bands = []
-      @@index_page = Nokogiri::HTML(open(url))
-      contry_bands = @@index_page.css('div.col-md-8')
-      level1 = contry_bands.css('table.table.table-hover.table-striped.table-bordered')
-      level2 = level1[3].css('a')
+       url = "https://www.frequencycheck.com/countries/#{name_of_contry}"
+       @@contry_bands = []
+       @@index_page = Nokogiri::HTML(open(url))
+       contry_bands = @@index_page.css('div.col-md-8')
+       level1 = contry_bands.css('table.table.table-hover.table-striped.table-bordered')
+       level2 = level1[3].css('a')
 
-      level2.each do |item|
-        text = item.text
-        alfanumeric_data = text.match(/(B)../)
+       level2.each do |item|
+          text = item.text
+          alfanumeric_data = text.match(/(B)../)
           if alfanumeric_data == nil
-            next
-         else
-         @@band = alfanumeric_data[0].match(/\d/)
-         @@contry_bands << @@band[0].to_i
-       end
-
-      #  @@contry_bands << @@band[0]
-    #   goal2.children[1].css('span').each do|items|
-      # @@xr_bands << items.text.to_i
-       end
-        @@contry_bands
+              next
+          else
+          @@band = alfanumeric_data[0].match(/\d/)
+          @@contry_bands << @@band[0].to_i
+          end
         end
-
-
-
-
-
-
-
+        @@contry_bands
+      end
 
 
 

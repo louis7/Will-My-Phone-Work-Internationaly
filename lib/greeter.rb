@@ -21,7 +21,6 @@ def greet
 end
 
 
-
 def user_phone_choice
     @user_input =  gets.chomp.to_i
     # magic array corespond wiht the inital greeting message
@@ -35,13 +34,14 @@ def user_phone_choice
     end
 end
 
+
+
 def user_contry_choice
     @user_input =  gets.chomp
     # magic array corespond wiht the inital greeting message
     # if [list of contries].include? @user_input
     #puts "thank you"
     @contry_choice = @user_input.downcase
-
 end
 
 
