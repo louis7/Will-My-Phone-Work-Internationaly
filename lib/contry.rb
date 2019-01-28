@@ -1,13 +1,15 @@
 
 class Contry
+  #contry class talk to scrapper to get its bands and also compare bands if given
+  # proper arguments
 attr_accessor :name, :bands, :carriers
 
 #carriers should be a hash
 
-def initialize (name:,bands:,carriers:)
+def initialize (name)
     @name= name
-    @bands= bands
-    @carriers = carriers
+    @bands= Scrapper.scrape_contry(name)
+  #  @carriers = carriers
 end
 
 def speak
@@ -16,22 +18,20 @@ end
 
 
 def answer (phone_bands)
-  # find out with bands from the contry is not reflected on the phone_bands.
+  # find out which bands from the contry is not reflected on the phone_bands.
+  # also calculate the percentage of the phone match bands with the respecting contry
   @phone_bands = phone_bands
-  @missing = self.bands - @phone_bands
- if @missing.empty?
-    puts "phone bands matched 100%"
- elsif @missing.size >= 1
-    num = @missing.size.to_f / self.bands.size
+  @missing_band = self.bands - @phone_bands
+ if @missing_band.empty?
+    puts "iPhone LTE bands matched 100%."
+    puts "you will have 4g/LTE speed in #{self.name}."
+ elsif @missing_band.size >= 1
+    num = @missing_band.size.to_f / self.bands.size
     percentage = num * 100
-    puts "phone is missing some bands, matched #{100-percentage.round}%"
- #else
-    #num = missing.size.to_f / self.bands.size
-    #percentage = num * 100
-    #percentage = @missing.size / self.band.size
-  #  puts "phone is missing some bands, matched #{100 -percentage}%""
+    puts "iPhone LTE bands matched #{100-percentage.round}%"
+    puts "iPhone is missing some bands,You will experience some issues with your 4g/LTE speed in #{self.name}"
   end
-@missing
+@missing_band
 
 end
 

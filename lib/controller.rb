@@ -11,16 +11,18 @@ def initialize
 end
 
 def call
+  # greet user, intantiate a phone, and contry, have contry calulate what missing
+  # .. than inform the user of the result.
+
     @app.greet
-    self.answer
     phone =Phone.new(@app.phone_choice)
-    phone.bands = [2,3,4]
-    contry = Contry.new(name:"Brazil", bands:[2,3,4,28,], carriers:"vivo")
-    @missing= contry.answer(phone.bands)
+    contry = Contry.new(@app.contry_choice)
+    @missing = contry.answer(phone.bands)
     self.answer
 
 end
 
+#name:"Brazil", bands:[2,3,4,28,], carriers:"vivo"
 
 def answer
     # need to be the hearth of the application. will comprater the stats and

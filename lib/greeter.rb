@@ -5,7 +5,7 @@ class Greeter
 
 def initialize
     @phone_choice  = []
-    @contry_choice = []
+    @contry_choice
 end
 
 def greet
@@ -40,7 +40,7 @@ def user_contry_choice
     # magic array corespond wiht the inital greeting message
     # if [list of contries].include? @user_input
     #puts "thank you"
-    @contry_choice << @user_input
+    @contry_choice = @user_input.downcase
 
 end
 
