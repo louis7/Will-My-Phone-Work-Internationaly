@@ -19,6 +19,8 @@ def call
     @phone =Phone.new(@app.phone_choice)
     @contry = Contry.new(@app.contry_choice)
     @missing = @contry.answer(@phone.bands)
+    puts "Gathering more info..."
+    sleep(3)
     self.more_info
 end
 
@@ -31,8 +33,7 @@ def more_info
   else
      puts "Here is the LTE bands of your #{@phone.name}: #{@phone.bands.join(', ')}."
      puts "Here is the LTE bands that #{@contry.name.capitalize} uses: #{@contry.bands.join(', ')}."
-     puts "Here is the LTE bands of your #{@phone.name}: #{@phone.bands.join(', ')}."
-     puts "Here is the missing LTE bands form your phone : #{@missing.join(', ')}."
+     puts "Here is the missing LTE bands from your phone : #{@missing.join(', ')}."
   end
 end
 

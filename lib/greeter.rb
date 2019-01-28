@@ -25,7 +25,7 @@ def user_phone_choice
     @user_input =  gets.chomp.to_i
     # magic array corespond wiht the inital greeting message
     if [1,2,3].include? @user_input
-        puts "thank you"
+        puts "Thank you"
         @phone_choice << @user_input
     else
         puts "invalid input"
