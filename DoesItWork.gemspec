@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{"Shorth summary"}
   spec.description   = %q{"longer description here"}
-  spec.homepage      = "https://github.com/louis7/DoesItWork"
+  spec.homepage      = "https://github.com/louis7/DoesItWork2"
   spec.license       = "MIT"
 
 
@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
     spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
     spec.metadata["homepage_uri"] = spec.homepage
-    spec.metadata["source_code_uri"] = "https://github.com/louis7/DoesItWork.git"
+    spec.metadata["source_code_uri"] = "https://github.com/louis7/DoeItWork2"
     spec.metadata["changelog_uri"] = "germ changelog md goes here"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \

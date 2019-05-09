@@ -1,8 +1,16 @@
 # DoesItWork
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/DoesItWork`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem solve a common problem that international iPhone buyers face:
+Does the iPhone purchase in the USA works at 4g/LTE speed overseas?
 
-TODO: Delete this and the text above, and describe your gem
+To address this, DoesItWork gem scrape the Apple website containing the LTE bands
+of the unlock iPhone models and frequencycheck.com to obtain the LTE bands use
+in international countries. Than, its compares those two data to deliver the
+probability of LTE coverage that the user may get in their countries.
+
+Currently, there are a few countries that do not support LTE which were not include
+in this gem. If you type in an unsupported country, the gem will warn you of an "underfined method"
+error. Fixes are coming soon.
 
 ## Installation
 
@@ -22,7 +30,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Run the app file on your terminal <<ruby app.rb>>
+Than follow the the Prompt on the screen.
+
+
 
 ## Development
 

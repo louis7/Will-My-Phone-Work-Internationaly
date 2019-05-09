@@ -1,7 +1,7 @@
 
 require_relative '../config/environment.rb'
 # greet user through the Greeter instance
-# grab the bands of contry and phone than compare them
+# grab the bands of country and phone than compare them
 # list
 
 class Controller
@@ -12,28 +12,62 @@ def initialize
 end
 
 def call
-  # greet user, intantiate a phone, and contry, have contry calulate what missing
+  # greet user, intantiate a phone, and country, have country calulate what missing
   # .. than inform the user of the result.
 
     @app.greet
     @phone =Phone.new(@app.phone_choice)
-    @contry = Contry.new(@app.contry_choice)
-    @missing = @contry.answer(@phone.bands)
+    @country = Country.new(@app.country_choice)
+    @missing = @country.answer(@phone.bands)
+    sleep(2)
     puts "Gathering more info..."
-    sleep(3)
+    sleep(2)
     self.more_info
 end
 
 #name:"Brazil", bands:[2,3,4,28,], carriers:"vivo"
 def more_info
-  # show the user a list of the bands of both the phone and contry_bands
+  # show the user a list of the bands of both the phone and country_bands
   if @missing.empty?
-     puts "Here is the LTE bands of your #{@phone.name}: #{@phone.bands.join(', ')}."
-     puts "Here is the LTE bands that #{@contry.name.capitalize} uses: #{@contry.bands.join(', ')}."
+    puts "                                                                "
+    puts "LTE bands of your phone"
+    puts "=============================================================="
+    puts "Device: #{@phone.name}"
+    puts "Bands: #{@phone.bands.join(', ')}."
+    puts "                                                                "
+    puts "                                                                "
+
+    puts "LTE bands of your country"
+    puts "=============================================================="
+    puts "Country: #{@country.name.capitalize}"
+    puts "Bands: #{@country.bands.join(', ')}."
+    puts "=============================================================="
+    puts "                                                                "
   else
-     puts "Here is the LTE bands of your #{@phone.name}: #{@phone.bands.join(', ')}."
-     puts "Here is the LTE bands that #{@contry.name.capitalize} uses: #{@contry.bands.join(', ')}."
-     puts "Here is the missing LTE bands from your phone : #{@missing.join(', ')}."
+     puts "                                                                "
+     puts "LTE bands of your phone"
+     puts "=============================================================="
+     puts "Device: #{@phone.name}"
+     puts "Bands: #{@phone.bands.join(', ')}."
+     puts "=============================================================="
+
+     puts "                                                                "
+     puts "                                                                "
+
+     puts "LTE bands of your country"
+     puts "=============================================================="
+     puts "Country: #{@country.name.capitalize}"
+     puts "Bands: #{@country.bands.join(', ')}."
+     puts "=============================================================="
+     puts "                                                                "
+     puts "                                                                "
+
+     puts "=============================================================="
+     puts "Your Phone is missing Band #{@missing.join(', ')}."
+     puts "=============================================================="
+     puts "                                                                "
+
+
   end
 end
 
